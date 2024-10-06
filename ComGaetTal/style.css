@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+}
+#guess {
+    font-size: 24px;
+    margin: 20px;
+}
+#feedback-buttons {
+    margin: 20px;
+}
+
+
+.correct-guess {
+    animation: blink 1s infinite;
+    color: green;
+    font-weight: bold;
+}
+
+/* animation */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
