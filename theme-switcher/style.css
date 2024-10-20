@@ -1,0 +1,89 @@
+/* Slippe for den grimme(?) blå focus på knappen  */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+h1{
+    font-size: 80px;
+}
+
+p{
+    font-size: 50px;
+}
+
+header {
+    padding: 10px;
+    text-align: center;
+}
+
+body[data-theme="hawaii"] {
+    --header-bg-col: #ff00c8;
+    --header-text-col: #fff;
+    --header-border-col: #fa3bfa;
+    --main-text-col: #000000;
+    --main-bg-col: #ff80f7; 
+    --footer-bg-col: #e13fcb; 
+    --footer-border-col: #da6bb3;
+    --body-bg-col: #ff80f0; 
+}
+
+
+body[data-theme="dark"] {
+    --header-bg-col: #333; 
+    --footer-bg-col: #333;
+    --header-text-col: #fff;
+    --header-border-col: #000;
+    --main-text-col: #fff;
+    --main-bg-col: #545454; 
+    --footer-border-col: #000;
+    --body-bg-col: #545454; 
+}
+
+
+body[data-theme="light"] {
+    --header-bg-col: #fffcf1; 
+    --header-text-col: #000;
+    --header-border-col: #bcceff;
+    --main-text-col: #000000;
+    --main-bg-col: #cde6fa; 
+    --footer-bg-col: #fffcf1; 
+    --footer-border-col: #c4bcff;
+    --body-bg-col: #d3cdfa; 
+}
+
+
+header {
+    background-color: var(--header-bg-col);
+    color: var(--header-text-col);
+    border-bottom: 2px solid var(--header-border-col);
+}
+
+footer {
+    background-color: var(--footer-bg-col);
+    color: var(--header-text-col);
+    border-bottom: 2px solid var(--footer-border-col);
+    padding: 50px;
+    margin-bottom: 5px;
+
+}
+
+main {
+    background-color: var(--main-bg-col);
+    color: var(--main-text-col);
+    border-top: 2px solid var(--main-border-col);  
+    height: 250px;
+    padding: 50px;
+}
+
+body{
+    padding: 30px;
+    background-color: var(--body-bg-col);
+}
