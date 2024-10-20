@@ -11,6 +11,13 @@ const Animal ={
     age: 0
 };
 
+const settings = {
+    filterBy: "all",
+    sortBy: "name",
+    sortDir:"asc"
+}
+
+
 function start( ) {
     console.log("ready");
     registerButtons();
@@ -23,10 +30,7 @@ function registerButtons(){
 
 }
 
-function selectFilter(event){
-    const filter = event.target.dataset.filter;
-    filterList(filter);
-}
+
 
 async function loadJSON() {
     const response = await fetch("animals.json");
@@ -54,18 +58,28 @@ function prepareObject (jsonObject){
         return animal;
     }
 
+function selectFilter(event){
+        const filter = event.target.dataset.filter;
+        setFilter(filter);
+}
 
-function filterList(animalType){
-  let filteredList = allAnimals;  
-  if (animalType === "cat"){
+function setFilter(filter){
+    settings.filterBy = filter;
+    buildList()
+}
+
+
+function filterList(filteredList){
+  //let filteredList = allAnimals;  
+  if (settings.filterBy === "cat"){
       filteredList = allAnimals.filter(isCat);
-  } else if (animalType === "dog"){
+  } else if (settings.filterBy === "dog"){
       filteredList = allAnimals.filter(isDog);
   }
 
 
-displayList(filteredList)
-};
+return filteredList
+}
 
 function isCat (animal){
  return animal.type === "cat";
@@ -85,30 +99,43 @@ function selectSort(event){
         event.target.dataset.sortDirection = "asc";
     }
     console.log(`User selected ${sortBy} - ${sortDir}`);
-    sortList(sortBy, sortDir);
+    setSort(sortBy, sortDir);
 }
 
-function sortList(sortBy, sortDir){
-    let sortedList = allAnimals;
+function setSort( sortBy, sortDir){
+    settings.sortBy = sortBy;
+    settings.sortDir = sortDir;
+    buildList();
+}
+
+function sortList(sortedList){
+    //let sortedList = allAnimals;
     let direction = 1;
-    if(sortDir === "desc"){
+    if(settings.sortDir === "desc"){
         direction= -1;
     } else {
-        direction = 1;
+        settings.direction = 1;
     }
 
     sortedList = sortedList.sort(sortByProperty);
    
     function sortByProperty(animalA, animalB){
-        if(animalA[sortBy] < animalB[sortBy]){
+        if(animalA[settings.sortBy] < animalB[settings.sortBy]){
             return -1 * direction;
         }else {
             return 1 * direction;
         }
     }
 
-    displayList(sortedList);
+    return sortedList;
     
+ }
+
+ function buildList(){
+    const currentlist = filterList(allAnimals);
+    const sortedList = sortList (currentlist);
+
+    displayList(sortedList);
  }
 
 function displayList(animals) {
