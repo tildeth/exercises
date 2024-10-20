@@ -2,6 +2,8 @@
 
 window.addEventListener("DOMContentLoaded", start);
 
+let allAnimals = [];
+
 const Animal ={
     name: "-deafult name-", 
     desc: "-no description-",
@@ -9,61 +11,73 @@ const Animal ={
     age: 0
 };
 
-const allAnimals = [];
-
 function start( ) {
     console.log("ready");
-
+    registerButtons();
     loadJSON();
 }
 
+function registerButtons(){
+    document.querySelectorAll("[data-action='filter']").forEach(button => button.addEventListener("click", selectFilter));
+}
 
-function loadJSON() {
-    fetch("animals.json")
-    .then( response => response.json() )
-    .then( jsonData => {
-        // when loaded, prepare objects
-        prepareObjects( jsonData );
-    });
+function selectFilter(event){
+    const filter = event.target.dataset.filter;
+    filterList(filter);
+}
+
+async function loadJSON() {
+    const response = await fetch("animals.json");
+    const jsonData = await response.json();
+
+    prepareObjects(jsonData);
 }
 
 function prepareObjects( jsonData ) {
-    jsonData.forEach( jsonObject => {
-        const fullname = jsonObject.fullname;
+ allAnimals = jsonData.map(prepareObject);
 
+ displayList(allAnimals);
+        
+    };
+
+function prepareObject (jsonObject){
         const animal = Object.create(Animal);
 
-        const firstSpace = fullname.indexOf(" ");
-        const secondSpace = fullname.indexOf(" ", firstSpace +1);
-        const lastSpace = fullname.lastIndexOf(" ")
+        const texts = jsonObject.fullname.split(" ");
+        animal.name = texts[0];
+        animal.desc = texts[2];
+        animal.type = texts[3];
+        animal.age = jsonObject.age;
 
-        const name =fullname.substring(0, firstSpace);
-        const desc = fullname.substring(secondSpace +1, lastSpace);
-        const type = fullname.substring(lastSpace +1);
+        return animal;
+    }
 
-       /*  console.log(`name: _${name}_ 
-            desc: _${desc}_
-            type: _${type}_`); */
 
-            animal.name = name;
-            animal.desc = desc;
-            animal.type = type;
-            animal.age = jsonObject.age;
+function filterList(animalType){
+  let filteredList = allAnimals;  
+  if (animalType === "cat"){
+      filteredList = allAnimals.filter(isCat);
+  } else if (animalType === "dog"){
+      filteredList = allAnimals.filter(isDog);
+  }
 
-            allAnimals.push(animal);
 
-        
-    });
+displayList(filteredList)
+};
 
-    displayList();
+function isCat (animal){
+ return animal.type === "cat";
 }
+function isDog (animal){
+    return animal.type === "dog";
+   }
 
-function displayList() {
+function displayList(animals) {
     // clear the list
     document.querySelector("#list tbody").innerHTML = "";
 
     // build a new list
-    allAnimals.forEach( displayAnimal );
+    animals.forEach( displayAnimal );
 }
 
 function displayAnimal( animal ) {
