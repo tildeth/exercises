@@ -137,3 +137,28 @@ body {
   }
 
 }
+
+.FooterFull{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+  .FooterArrows{
+    display: flex;
+  flex-direction: row;
+  align-self: center;
+  font-size: 15px;
+  align-items: center;
+  gap: 5px;
+  }
+
+  .FooterUre{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    font-size: 15px;
+    gap: 5px;
+  }
+
+}
+
