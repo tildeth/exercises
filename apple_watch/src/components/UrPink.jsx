@@ -1,9 +1,11 @@
+"use client";
 import Image from 'next/image';
+import ocean from "./../../public/ocean.png"
 
-const UrPink = () => {
-    return ( <div className='ur_container'>
+const UrPink = ({setSelectedColor}) => {
+    return ( <div onClick={()=> setSelectedColor(ocean)} className='ur_container'>
         <div className='bg_box_pink'></div>
-        <Image className='ur_pic' src="/ocean.png" alt="Ur" width={70} height={70} />
+        <Image className='ur_pic' src={ocean} alt="Ur" width={90} height={90} />
         
     </div> );
 }

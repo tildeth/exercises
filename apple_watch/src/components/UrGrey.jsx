@@ -1,8 +1,11 @@
+"use client";
 import Image from 'next/image';
+import navy from "./../../public/navy.png"
 
-const UrGrey = () => {
-    return ( <div className='ur_container'>
-         <Image className='ur_pic' src="/navy.png" alt="Ur" width={70} height={70} />
+
+const UrGrey = ({setSelectedColor}) => {
+    return ( <div onClick={() => setSelectedColor(navy)} className='ur_container'>
+         <Image className='ur_pic' src={navy} alt="Ur" width={90} height={90} />
         <div className='bg_box_grey'></div>
     </div> );
 }

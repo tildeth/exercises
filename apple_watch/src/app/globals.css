@@ -96,7 +96,16 @@ body {
 .ContentColorSwatch{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-end;
+  gap: 50px;
+
+  .content_ur{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
 
   .cirkel_navy{
     background-color: var(--grey);
@@ -130,24 +139,22 @@ body {
     transform: scale(1.2);
     transition: 0.3s ease-in-out;
   };
-  .content_ur{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
 
 }
 
-.FooterFull{
+.content1{
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  gap: 150px;
+}
 
+.content2{
+  display: flex;
+
+}
   .FooterArrows{
     display: flex;
   flex-direction: row;
-  align-self: center;
   font-size: 15px;
   align-items: center;
   gap: 5px;
@@ -160,7 +167,6 @@ body {
     gap: 30px;
   }
 
-}
 
 .ur_container{
   position: relative; 
@@ -172,18 +178,24 @@ body {
 .ur_pic{
   position: absolute; 
     z-index: 10; 
-  left: 22%;
+  left: 14%;
   top: -40%;
- 
+
 }
 
 .bg_box_pink{
-  position: absolute; 
+  position: absolute;
   width: 100%;
   height: 100%;
   background-color: var(--pink);
   border-radius: 10px;
   opacity: 0.6;
+}
+
+.bg_box_pink:hover{
+  opacity: 1;
+  transform: scale(1.2);
+    transition: 0.3s ease-in-out;
 }
 
 .bg_box_blue{
@@ -194,6 +206,13 @@ body {
   border-radius: 10px;
   opacity: 0.6;
 }
+
+.bg_box_blue:hover{
+  opacity: 1;
+  transform: scale(1.2);
+    transition: 0.3s ease-in-out;
+}
+
 .bg_box_grey{
   position: absolute; 
   width: 100%;
@@ -201,6 +220,12 @@ body {
   background-color: var(--grey);
   border-radius: 10px;
   opacity: 0.6;
+}
+
+.bg_box_grey:hover{
+  opacity: 1;
+  transform: scale(1.2);
+    transition: 0.3s ease-in-out;
 }
 
 
