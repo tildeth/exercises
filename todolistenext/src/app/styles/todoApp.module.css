@@ -1,50 +1,67 @@
 .appContainer {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }
 
-.taskForm{
-    margin-bottom: 20px;
+.taskSections {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
 }
 
-.inputForm{
+.doneSection, .todoSection {
+    flex: 1; 
+    min-width: 0; 
+    height: auto; 
+    margin-top: 20px;
+  }
+
+.h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.taskForm {
+  margin-bottom: 20px;
+}
+
+.inputForm {
+  padding: 10px;
+}
+
+.inputForm:focus {
+  color: black;
+}
+
+.taskList {
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
+    border: 1px solid hotpink;
+  }
 }
 
-.inputForm:focus{
-    color: black;
-}
-
-.taskList{
-    list-style: none;
-    padding: 0;
-   
-    li{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        border: 1px solid hotpink;
-    }
-}
-
-.taskList li.completed{
-    text-decoration: line-through ;
-   
+.taskList li.completed {
+  text-decoration: line-through;
 }
 
 .deleteButton {
-    background-color: #ff4d4d;
-    border: none;
-    padding: 5px 10px;
-    margin-left: 10px;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #ff4d4d;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .deleteButton:hover {
-    background-color: #ff1a1a;
+  background-color: #ff1a1a;
 }
-
