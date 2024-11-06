@@ -34,12 +34,20 @@ const ToDoApp = () => {
         )
         )
         
-    }
+    };
+
+    //Funktion til at slette opagver
+    const deleteTask = (id) => {
+        setTasks((prevTasks)=> prevTasks.filter((task) => task.id !==id));
+    };
     return ( 
         <div className={styles.appContainer}>
             <h1>To-Do</h1>
             <TaskForm addTask={addTask}/>
-            <TaskList tasks={tasks} toggleComplete={toggleComplete}/>
+            <TaskList 
+            tasks={tasks} 
+            toggleComplete={toggleComplete}
+            deleteTask={deleteTask} />
         </div>
      );
 }
