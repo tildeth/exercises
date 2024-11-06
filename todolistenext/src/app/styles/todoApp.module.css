@@ -1,0 +1,33 @@
+.appContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.taskForm{
+    margin-bottom: 20px;
+}
+
+.inputForm{
+    padding: 10px;
+}
+
+.taskList{
+    list-style: none;
+    padding: 0;
+   
+    li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid hotpink;
+    }
+}
+
+.taskList li.completed{
+    text-decoration: line-through ;
+    color: grey;
+}
+
